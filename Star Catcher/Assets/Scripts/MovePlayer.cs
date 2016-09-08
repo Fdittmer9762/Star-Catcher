@@ -4,20 +4,21 @@ using System.Collections;
 public class MovePlayer : MonoBehaviour {
 
 	public Rigidbody rb;
-	public float moveSpeed;
-	public float jumpSpeed;
-	private float jumpLimit = 2;
+	private float moveSpeed = 8;
+	private float jumpSpeed = 3;
+	private float jumpLimit = 4;
 	public bool isGrounded = true;
 
 
 	void Start () {
 		isGrounded = true;
-		jumpLimit = 2;
+		jumpLimit = 4;
 		rb = GetComponent<Rigidbody>();
 	}
 
 	void Jump(){
 		rb.AddForce (0, 100 * jumpSpeed * jumpLimit--, 0);
+		Debug.Log ("Jump" + jumpLimit);
 	}
 
 	void Move () {
@@ -27,10 +28,12 @@ public class MovePlayer : MonoBehaviour {
 	void OnTriggerEnter (){
 		jumpLimit = 2;
 		isGrounded = true;
+		moveSpeed = 8;
 	}
 
 	void OnTriggerExit() {
 		isGrounded = false;
+		moveSpeed = 4;
 	}
 
 	void Update () {
