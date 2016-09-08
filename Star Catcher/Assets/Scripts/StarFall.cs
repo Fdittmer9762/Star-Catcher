@@ -8,7 +8,7 @@ public class StarFall : MonoBehaviour {
 
 	void Start () {
 		star.useGravity = false;
-		starTraject.x = Random.Range(0f,4f);
+		starTraject.x = Random.Range(-10f,0f);
 	}
 
 	void OnTriggerEnter () {
