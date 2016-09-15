@@ -34,6 +34,10 @@ public class MovePlayer : MonoBehaviour {
 		StartCoroutine (Move ());
 	}
 
+	IEnumerator Slide() {
+		yield return null;
+	}
+
 	void OnTriggerEnter (){
 		jumpLimit = 2;
 		isGrounded = true;
@@ -43,7 +47,6 @@ public class MovePlayer : MonoBehaviour {
 	void OnTriggerExit() {
 		isGrounded = false;
 		//moveSpeed = 4; //removed limit on lateral movement while airborne, removed issues with module setup
-		Debug.Log(isGrounded);
 	}
 
 
