@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
 
-	public Rigidbody rb;
+	private Rigidbody rb;
 	public float moveSpeed;
 	private float jumpSpeed = 3;
 	private float jumpLimit;
@@ -47,6 +47,12 @@ public class MovePlayer : MonoBehaviour {
 	void OnTriggerExit() {
 		isGrounded = false;
 		//moveSpeed = 4; //removed limit on lateral movement while airborne, removed issues with module setup
+	}
+
+	void OnDisable (){
+		//set gamestate to gameover
+		Debug.Log("Dead!");
+		GameStates.currentGameState = GameStates.gameState.GameOver;
 	}
 
 
