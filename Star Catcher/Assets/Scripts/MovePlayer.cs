@@ -4,9 +4,9 @@ using System.Collections;
 public class MovePlayer : MonoBehaviour {
 
 	public Rigidbody rb;
-	private float moveSpeed = 8;
+	public float moveSpeed;
 	private float jumpSpeed = 3;
-	private float jumpLimit = 4;
+	private float jumpLimit;
 	public bool isGrounded = true;
 
 
@@ -14,32 +14,37 @@ public class MovePlayer : MonoBehaviour {
 		isGrounded = true;
 		jumpLimit = 4;
 		rb = GetComponent<Rigidbody>();
+		StartCoroutine (Move ());
+		StartCoroutine (Jump ());
 	}
 
-	void Jump(){
-		rb.AddForce (0, 100 * jumpSpeed * jumpLimit--, 0);
-		Debug.Log ("Jump" + jumpLimit);
+	IEnumerator Jump(){
+		if(Input.GetKeyDown(KeyCode.Space)){
+			//rb.transform.Translate (0, 25 * jumpSpeed * jumpLimit--* Time.deltaTime, 0);
+			rb.AddForce (0, 100 * jumpSpeed * jumpLimit--, 0);
+			Debug.Log ("Jump" + jumpLimit);
+		}
+		yield return null;
+		StartCoroutine (Jump ());
 	}
 
-	void Move () {
+	IEnumerator Move () {
 		rb.transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed, 0, 0);
+		yield return null;
+		StartCoroutine (Move ());
 	}
 
 	void OnTriggerEnter (){
 		jumpLimit = 2;
 		isGrounded = true;
-		moveSpeed = 8;
+		//moveSpeed = 8; //not needed without limiter
 	}
 
 	void OnTriggerExit() {
 		isGrounded = false;
-		moveSpeed = 4;
+		//moveSpeed = 4; //removed limit on lateral movement while airborne, removed issues with module setup
+		Debug.Log(isGrounded);
 	}
 
-	void Update () {
-		Move ();
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			Jump();
-		}
-	}
+
 }
