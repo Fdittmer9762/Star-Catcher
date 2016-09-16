@@ -3,12 +3,11 @@ using System.Collections;
 
 public class StarCollect : MonoBehaviour {
 
-	public GameObject star;
+	private GameObject star;
 
-	void OnTriggerEnter (){
+	void OnTriggerEnter (Collider other){
 		Debug.Log ("Star Collected");
-		star.SetActive (false);
-		//Add Star Points, may do in different script
+		other.gameObject.SetActive (false);
 	}
 
 }
