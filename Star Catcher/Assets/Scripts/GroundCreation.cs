@@ -6,7 +6,7 @@ public class GroundCreation : MonoBehaviour {
 	int countdown;
 	int rndNumber;
 	bool gap;
-	public float delay = .195f;
+	public float delay = 2f;
 
 	public Transform groundSpawn;
 
@@ -18,11 +18,14 @@ public class GroundCreation : MonoBehaviour {
 	public GameObject groundStart;
 
 	void Start(){
+		//float camSpeed = CameraMover.camSpeed.x;
+		//delay = 100 / camSpeed;
 		StartCoroutine (Spawner ());
 	}
 
 	IEnumerator Spawner (){
 		rndNumber = Random.Range (0, 4);//set rndNumber to random number
+
 		yield return new WaitForSeconds (delay);
 		Ground ();
 		//StartCoroutine (Spawner ());
