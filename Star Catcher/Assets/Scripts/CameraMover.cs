@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraMover : MonoBehaviour {
 
-	public Vector3 camSpeed;
+	public Vector3 camSpeed;//x=3
 
 	IEnumerator MoveCamera(){
 		transform.Translate(camSpeed*Time.deltaTime);
