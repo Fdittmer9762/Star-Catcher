@@ -12,8 +12,8 @@ public class GroundCreation : MonoBehaviour {
 
 	public GameObject ground1;
 	public GameObject ground2;
-	public GameObject ground3;
-	public GameObject ground4;
+	public GameObject slopeUp;
+	public GameObject slopeDown;
 	public GameObject groundEnd;
 	public GameObject groundStart;
 
@@ -25,10 +25,8 @@ public class GroundCreation : MonoBehaviour {
 
 	IEnumerator Spawner (){
 		rndNumber = Random.Range (0, 4);//set rndNumber to random number
-
 		yield return new WaitForSeconds (delay);
 		Ground ();
-		//StartCoroutine (Spawner ());
 	}
 
 	IEnumerator Gap (){
@@ -44,23 +42,27 @@ public class GroundCreation : MonoBehaviour {
 	void Ground(){
 		switch (rndNumber) {
 		case 1:
-			Instantiate(ground1, groundSpawn.position, Quaternion.identity);//spawn ground 1
+			Instantiate(ground1, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;
 		case 2:
-			Instantiate(ground2, groundSpawn.position, Quaternion.identity);//spawn ground 
+			Instantiate(ground2, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;
 		case 3:
-			Instantiate(ground3, groundSpawn.position, Quaternion.identity);//spawn ground 1
+			transform.Translate (transform.up);
+			Debug.Log (transform.position + "up");
+			Instantiate(slopeUp, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;
 		case 4:
-			Instantiate(ground4, groundSpawn.position, Quaternion.identity);//spawn ground 1
+			transform.Translate (0,-1,0);
+			Debug.Log (transform.position + "down");
+			Instantiate(slopeDown, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;
 		case 0:
-			countdown = Random.Range (2, 4);//set countdown to random number
+			countdown = Random.Range (4, 8);//set countdown to random number
 			StartCoroutine (Gap());
 			break;
 		}
