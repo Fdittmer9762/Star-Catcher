@@ -51,13 +51,13 @@ public class GroundCreation : MonoBehaviour {
 			break;
 		case 3:
 			transform.Translate (transform.up);
-			Debug.Log (transform.position + "up");
+			//Debug.Log (transform.position + "up");
 			Instantiate(slopeUp, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;
 		case 4:
 			transform.Translate (0,-1,0);
-			Debug.Log (transform.position + "down");
+			//Debug.Log (transform.position + "down");
 			Instantiate(slopeDown, groundSpawn.position, Quaternion.identity);
 			StartCoroutine (Spawner ());
 			break;

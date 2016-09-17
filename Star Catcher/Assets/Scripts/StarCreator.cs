@@ -12,7 +12,7 @@ public class StarCreator : MonoBehaviour {
 		showerDelay = Random.Range(delayMin,delayMax);
 		spawnPos.x = Random.Range (-1 * posRange, posRange);
 		Instantiate(starPrefab, spawnPos, Quaternion.identity);
-		Debug.Log (spawnPos);
+		//Debug.Log (spawnPos);
 		yield return new WaitForSeconds (showerDelay);
 		StartCoroutine (StarShower ());
 	}

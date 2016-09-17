@@ -3,17 +3,6 @@ using System.Collections;
 
 public class EnemyA : MonoBehaviour {
 
-
-	/*public Rigidbody rb;
-	private float gravity = -1f;
-	public float scuddle;
-
-	IEnumerator Move () {
-		rb.transform.Translate (scuddle * Time.deltaTime, gravity, 0);
-		yield return null;
-		StartCoroutine (Move ());
-	}*/
-
 	void Start () {
 		StartCoroutine (Move (Vector3.left));
 	}

@@ -22,7 +22,7 @@ public class MovePlayer : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			//rb.transform.Translate (0, 25 * jumpSpeed * jumpLimit--* Time.deltaTime, 0);
 			rb.AddForce (0, 100 * jumpSpeed * jumpLimit--, 0);
-			Debug.Log ("Jump" + jumpLimit);
+			//Debug.Log ("Jump" + jumpLimit);
 		}
 		yield return null;
 		StartCoroutine (Jump ());
