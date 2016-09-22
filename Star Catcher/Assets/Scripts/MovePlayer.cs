@@ -5,7 +5,7 @@ public class MovePlayer : MonoBehaviour {
 
 	private Rigidbody rb;
 	public float moveSpeed;
-	private float jumpSpeed = 3;
+	public float jumpSpeed = 3;
 	private float jumpLimit;
 	public bool isGrounded = true;
 
